@@ -13,12 +13,6 @@ const Product = require("./database/productModel");
 const Cart = require("./database/cartModel");
 connectToMongoose();
 
-// var indexRouter = require("./routes/index");
-// var usersRouter = require("./routes/users");
-const { get } = require("http");
-const { electron } = require("webpack");
-const { resolveWatchPlugin } = require("jest-resolve");
-const { query } = require("express");
 const verifyToken = require("./routes/verifyToken");
 var app = express();
 const cors = require("cors");
