@@ -25,13 +25,10 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "build")));
 app.use("/auth", auth);
 // app.use("/", indexRouter);
 // app.use("/users", usersRouter);
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+
 // get all users
 app.get("/getUsers", async (_, res) => {
 	try {
@@ -247,6 +244,13 @@ app.delete("/deleteCart", async (req, res) => {
 	} catch (err) {
 		res.status(400).json(err);
 	}
+});
+
+// Serve React app's index.html for any non-API route
+app.use(express.static(path.join(__dirname, "build"))); // Serve static files from React build
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // catch 404 and forward to error handler
