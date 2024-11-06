@@ -117,7 +117,7 @@ app.get("/getProducts", async (_, res) => {
 
 		res.json(productData);
 	} catch (err) {
-		console.log.error("something went wrong");
+		console.log("something went wrong");
 	}
 });
 
